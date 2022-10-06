@@ -1,35 +1,16 @@
-#include <stdio.h>
+#include "stdio.h"
 #include "string.h"
 #include "stdlib.h"
 
-int main() {
-    double sheet[6][8];
-    FILE *p_file = NULL;
-    p_file = fopen("data.csv","r");
-    char *line, *record = NULL;
-    char buf[1000];
-    int m = 0,n = 0;
-    if(p_file != NULL){
-        while ((line = fgets(buf,sizeof(buf), p_file))!=NULL){
-            record = strtok(line, ",");
-            while (record != NULL){
-                printf("%s ",record);
-                sheet[m][n] = strtod(record,NULL);
-                record = strtok(NULL, ",");
-                n++;
-            }
-            n = 0;
-            m++;
-        }
-        fclose(p_file);
-        p_file = NULL;
-    }
-    printf("\n\n");
-    for (int i = 0; i < 5; ++i) {
-        for (int j = 0; j < 7; ++j) {
-            printf("%.0lf ",sheet[i][j]);
-        }
-        printf("\n");
-    }
-    return 0;
+static double sheet[6][8]={
+        70,91,100,63,58,50,54,28,
+        11.23,8.53,4.59,1.96,1.21,0.86,0.43,0.31,
+        121,104,100,101,93,101,108,94,
+        18.7,16.25,14.77,12.22,10.25,8.07,6.52,5.24,
+        56,67,72,90,89,63,112,132,
+        1.28,2.21,1.66,0.59,0.26,0.39,0.46,0.55
+};
+
+int main(){
+
 }
