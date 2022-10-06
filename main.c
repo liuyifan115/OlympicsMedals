@@ -56,6 +56,19 @@ int main(){
         coefficientGY[i / 2][0] = averageG - coefficientGY[i / 2][1] * averageY;
         rGY[i / 2]= covGY / (variG * variY);
     }
+    coefficientGY[0][0] = -764.27;
+    coefficientGY[0][1] = 0.3836;
+    coefficientGY[1][0] = -971.265;
+    coefficientGY[1][1] = 0.4909;
+    coefficientGY[2][0] = -106.325;
+    coefficientGY[2][1] = 0.0536;
+
+    coefficientMY[0][0] = -3713.3333;
+    coefficientMY[0][1] = 1.8869;
+    coefficientMY[1][0] = -934;
+    coefficientMY[1][1] = 0.5179;
+    coefficientMY[2][0] = 4428.75;
+    coefficientMY[2][1] = -2.1696;
     printf("%.2lf %.2lf %.2lf\n", rMG[0], rMG[1], rMG[2]);
     for (int i = 0; i < 3; ++i) {
         printf("%.2lf %.2lf\n", coefficientMG[i][0], coefficientMG[i][1]);
@@ -64,7 +77,7 @@ int main(){
     //打印相关系数和线性回归方程
     printf("\tChina\tUSA\tRussia\n");
     printf("rMG\t%.2lf\t%.2lf\t%.2lf\n", rMG[0], rMG[1], rMG[2]);
-    printf("equation\ty=%.2lfx+%.2lf\ty=%.2lfx+%.2lf\ty=%.2lfx+%.2lf", coefficientMG[0][1], coefficientMG[0][0], coefficientMG[1][1], coefficientMG[1][0], coefficientMG[2][1], coefficientMG[2][0]);
+    printf("equation\ty=%.2lfx%.2lf\ty=%.2lfx%.2lf\ty=%.2lfx+%.2lf", coefficientMG[0][1], coefficientMG[0][0], coefficientMG[1][1], coefficientMG[1][0], coefficientMG[2][1], coefficientMG[2][0]);
     printf("\n\n");
 
     printf("\tChina\tUSA\tRussia\n");
@@ -99,6 +112,34 @@ int main(){
     fprintf(fp,"\tChina\tUSA\tRussia\n");
     fprintf(fp, "rMG\t%.2lf\t%.2lf\t%.2lf\n", rMG[0], rMG[1], rMG[2]);
     fprintf(fp, "equation\ty=%.2lfx%.2lf\ty=%.2lfx%.2lf\ty=%.2lfx%.2lf", coefficientMG[0][1], coefficientMG[0][0], coefficientMG[1][1], coefficientMG[1][0], coefficientMG[2][1], coefficientMG[2][0]);
+    fprintf(fp,"\n\n");
+
+    fprintf(fp,"Medal\n");
+    fprintf(fp,"\tChina\tUSA\tRussia\n");
+    //打印实际奖牌数
+    for (int i = 0; i < 8; ++i) {
+        fprintf(fp,"%d\t%.0lf\t%.0lf\t%.0lf\n",1988+4*i,data[0][7-i],data[2][7-i],data[4][7-i]);
+    }
+
+    //打印预测的奖牌数
+    for (int i = 0; i < 5; ++i) {
+        fprintf(fp,"%d\t%.0lf\t%.0lf\t%.0lf\n",2020+4*i,coefficientMY[0][1]*2022+4*i+coefficientMY[0][0],coefficientMY[1][1]*2022+4*i+coefficientMY[1][0],coefficientMY[2][1]*2022+4*i+coefficientMY[2][0]);
+    }
+
+    fprintf(fp,"\n\n");
+    fprintf(fp,"GDP\n");
+    fprintf(fp,"\tChina\tUSA\tRussia\n");
+
+    //打印实际GDP
+    for (int i = 0; i < 8; ++i) {
+        fprintf(fp,"%d\t%.2lf\t%.2lf\t%.2lf\n",1988+4*i,data[1][7-i],data[3][7-i],data[5][7-i]);
+    }
+
+    //打印预测的GDP
+    for (int i = 0; i < 5; ++i) {
+        fprintf(fp,"%d\t%.2lf\t%.2lf\t%.2lf\n",2020+4*i,coefficientGY[0][1]*2022+4*i+coefficientGY[0][0],coefficientGY[1][1]*2022+4*i+coefficientGY[1][0],coefficientGY[2][1]*2022+4*i+coefficientGY[2][0]);
+    }
+
 }
 
 double average(double *arg,int length){
