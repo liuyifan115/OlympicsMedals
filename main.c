@@ -10,24 +10,26 @@ int main() {
     char buf[1000];
     int m = 0,n = 0;
     if(p_file != NULL){
-//        fseek(p_file, 42L, SEEK_SET);
         while ((line = fgets(buf,sizeof(buf), p_file))!=NULL){
             record = strtok(line, ",");
             while (record != NULL){
-                sheet[m][n] = strtod(record,NULL);
                 printf("%s ",record);
+                sheet[m][n] = strtod(record,NULL);
                 record = strtok(NULL, ",");
                 n++;
             }
+            n = 0;
             m++;
         }
         fclose(p_file);
         p_file = NULL;
     }
+    printf("\n\n");
     for (int i = 0; i < 5; ++i) {
         for (int j = 0; j < 7; ++j) {
-            printf("%lf",sheet[i][j]);
+            printf("%.0lf ",sheet[i][j]);
         }
+        printf("\n");
     }
     return 0;
 }
