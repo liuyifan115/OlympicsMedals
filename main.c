@@ -73,63 +73,63 @@ int main(){
     }
 //控制台输出区
 
-    //打印相关系数和线性回归方程
-    printf("%s", countryname);
-    printf("r\t");
-    for (int i = 0; i < 18; ++i) {
-        printf("%.2lf\t",rMG[i]);
-    }
-    printf("\n");
-    printf("equation\t");
-    for (int i = 0; i < 18; ++i) {
-        if(coefficientMG[i][0]>0){
-            printf("y=%.2lfx+%.2lf\t",coefficientMG[i][1], coefficientMG[i][0]);
-        }
-        else{
-            printf("y=%.2lfx%.2lf\t",coefficientMG[i][1], coefficientMG[i][0]);
-        }
-    }
-    printf("\n\n");
-    printf("%s", countryname);
-
-    //打印实际奖牌数
-    for (int i = 0; i < 8; ++i) {
-        printf("%d\t",1988+4*i);
-        for (int j = 0; j < 36; j+=2) {
-            printf("%.0lf\t",data[j][7-i]);
-        }
-        printf("\n");
-    }
-
-    //打印预测的奖牌数
-    for (int i = 0; i < 10; ++i) {
-        printf("%d\t",2020+4*i);
-        for (int j = 0; j < 18; ++j) {
-            printf("%.0lf\t",coefficientMY[j][1]*2022+4*i+coefficientMY[j][0]);
-        }
-        printf("\n");
-    }
-
-    printf("\n\n");
-    printf("%s", countryname);
-
-    //打印实际GDP
-    for (int i = 0; i < 8; ++i) {
-        printf("%d\t",1988+4*i);
-        for (int j = 0; j < 36; j+=2) {
-            printf("%.2lf\t",data[j+1][7-i]);
-        }
-        printf("\n");
-    }
-
-    //打印预测的GDP
-    for (int i = 0; i < 10; ++i) {
-        printf("%d\t",2020+4*i);
-        for (int j = 0; j < 18; ++j) {
-            printf("%.2lf\t",coefficientGY[j][1]*2022+4*i+coefficientGY[j][0]);
-        }
-        printf("\n");
-    }
+//    //打印相关系数和线性回归方程
+//    printf("%s", countryname);
+//    printf("r\t");
+//    for (int i = 0; i < 18; ++i) {
+//        printf("%.2lf\t",rMG[i]);
+//    }
+//    printf("\n");
+//    printf("equation\t");
+//    for (int i = 0; i < 18; ++i) {
+//        if(coefficientMG[i][0]>0){
+//            printf("y=%.2lfx+%.2lf\t",coefficientMG[i][1], coefficientMG[i][0]);
+//        }
+//        else{
+//            printf("y=%.2lfx%.2lf\t",coefficientMG[i][1], coefficientMG[i][0]);
+//        }
+//    }
+//    printf("\n\n");
+//    printf("%s", countryname);
+//
+//    //打印实际奖牌数
+//    for (int i = 0; i < 8; ++i) {
+//        printf("%d\t",1988+4*i);
+//        for (int j = 0; j < 36; j+=2) {
+//            printf("%.0lf\t",data[j][7-i]);
+//        }
+//        printf("\n");
+//    }
+//
+//    //打印预测的奖牌数
+//    for (int i = 0; i < 10; ++i) {
+//        printf("%d\t",2020+4*i);
+//        for (int j = 0; j < 18; ++j) {
+//            printf("%.0lf\t",coefficientMY[j][1]*2022+4*i+coefficientMY[j][0]);
+//        }
+//        printf("\n");
+//    }
+//
+//    printf("\n\n");
+//    printf("%s", countryname);
+//
+//    //打印实际GDP
+//    for (int i = 0; i < 8; ++i) {
+//        printf("%d\t",1988+4*i);
+//        for (int j = 0; j < 36; j+=2) {
+//            printf("%.2lf\t",data[j+1][7-i]);
+//        }
+//        printf("\n");
+//    }
+//
+//    //打印预测的GDP
+//    for (int i = 0; i < 10; ++i) {
+//        printf("%d\t",2020+4*i);
+//        for (int j = 0; j < 18; ++j) {
+//            printf("%.2lf\t",coefficientGY[j][1]*2022+4*i+coefficientGY[j][0]);
+//        }
+//        printf("\n");
+//    }
 
 
 //文件输出区
