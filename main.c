@@ -1,9 +1,10 @@
 #include "stdio.h"
-#include "string.h"
-#include "stdlib.h"
 #include "math.h"
 
-double average(double *arg,int length);
+double average(double *arr, int length);
+double variance(double *arr, int length);
+double stddevi(double *arr, int length);
+double cov(double *arrX, double *arrY, int length);
 
 static double data[6][8]={
         70,91,100,63,58,50,54,28,
@@ -142,12 +143,42 @@ int main(){
 
 }
 
-double average(double *arg,int length){
+double average(double *arr, int length){ //计算平均数
     double sum=0;
     for (int i = 0; i < length; ++i) {
-        sum += *arg;
-        arg++;
+        sum += *arr;
+        arr++;
     }
     sum *= 1.0/length;
     return sum;
+}
+
+double variance(double *arr, int length){ //计算方差
+    double aver=average(arr, length);
+    double sum=0;
+    for (int i = 0; i < length; ++i) {
+        sum += (*arr - aver) * (*arr - aver);
+        arr++;
+    }
+    return sum;
+}
+
+double stddevi(double *arr, int length){ //计算标准差
+    return sqrt(variance(arr,length));
+}
+
+double cov(double *arrX, double *arrY, int length){ //计算cov
+    double averX = average(arrX,length);
+    double averY = average(arrY,length);
+    double sum = 0;
+    for (int i = 0; i < length; ++i) {
+        sum += (*arrX - averX)*(*arrY - averY);
+        arrX++;
+        arrY++;
+    }
+    return sum;
+}
+
+double relation(double *arrX, double *arrY, int length){ //计算相关系数
+    return cov(arrX,arrY,length)/(stddevi(arrX,length)* stddevi(arrY,length));
 }
