@@ -49,7 +49,7 @@ static double data[36][8]={
 static double year[8]={2016,2012,2008,2004,2000,1996,1992,1988};
 
 static char countryname[]="\tChina\tUSA\tRussia\tArgentina\tAustralia\tBrazil\tCanada\tFrance\tGerman\tIndia\tIndonesia\tItalia"
-                          "\tJapan\tKorean\tMexico\tNorth Africa\tTurkey\n";
+                          "\tJapan\tKorean\tMexico\tNorth Africa\tTurkey\tEngland\n";
 
 int main(){
     double rMG[18];
@@ -102,7 +102,7 @@ int main(){
 //    }
 //
 //    //打印预测的奖牌数
-//    for (int i = 0; i < 10; ++i) {
+//    for (int i = 0; i < 5; ++i) {
 //        printf("%d\t",2020+4*i);
 //        for (int j = 0; j < 18; ++j) {
 //            printf("%.0lf\t",coefficientMY[j][1]*2022+4*i+coefficientMY[j][0]);
@@ -123,7 +123,7 @@ int main(){
 //    }
 //
 //    //打印预测的GDP
-//    for (int i = 0; i < 10; ++i) {
+//    for (int i = 0; i < 5; ++i) {
 //        printf("%d\t",2020+4*i);
 //        for (int j = 0; j < 18; ++j) {
 //            printf("%.2lf\t",coefficientGY[j][1]*2022+4*i+coefficientGY[j][0]);
@@ -171,7 +171,7 @@ int main(){
     }
 
     //输出预测的奖牌数
-    for (int i = 0; i < 10; ++i) {
+    for (int i = 0; i < 5; ++i) {
         fprintf(fp,"%d\t",2020+4*i);
         for (int j = 0; j < 18; ++j) {
             fprintf(fp,"%.0lf\t",coefficientMY[j][1]*2022+4*i+coefficientMY[j][0]);
@@ -181,7 +181,7 @@ int main(){
 
     fprintf(fp,"\n\n");
     fprintf(fp,"GDP\n");
-    fprintf(fp,"\tChina\tUSA\tRussia\n");
+    fprintf(fp,"%s", countryname);
 
     //输出实际GDP
     for (int i = 0; i < 8; ++i) {
@@ -193,7 +193,7 @@ int main(){
     }
 
     //输出预测的GDP
-    for (int i = 0; i < 10; ++i) {
+    for (int i = 0; i < 5; ++i) {
         fprintf(fp,"%d\t",2020+4*i);
         for (int j = 0; j < 18; ++j) {
             fprintf(fp,"%.2lf\t",coefficientGY[j][1]*2022+4*i+coefficientGY[j][0]);
